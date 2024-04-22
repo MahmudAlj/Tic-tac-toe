@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 
-//char k1,char k2,char k3,char k4,char k5,char k6,char k7,char k8,char k9
 
 
 int main(){
@@ -19,15 +18,28 @@ int main(){
    char array[9];
    char ex = 'X';
    char oo = 'O';
-   bool kosul = true;
+   bool kosul1 = true;
+   bool kosul2 = true;
    int tas1;
    char tas;
-   start:
+   
    // sec ve oyna 
-   std::cout << "lutfen tas sec" << std::endl;
+   while(kosul1){
+        std::cout << "birinci oyunucu lutfen tas sec" << std::endl;
    std::cin >> tas;
+   oyuncubir = tas;
+   tas = 0;
+    std::cout << "ikinci oyuncu lutfen tas sec" << std::endl;
+   std::cin >> tas;
+   oyuncuiki = tas;
+   kosul1 = false;
+   }
+
+ 
+ while(kosul2){
+   
    switch (tas){  
-case 'O':
+case 'O' & 'o':
 std::cin>> tas1;
 switch (tas1)
 {
@@ -60,7 +72,7 @@ case 1:
    break;
 }
 break;
-case 'X':
+case 'X' & 'x':
 std::cin>> tas1;
 switch (tas1)
 {
@@ -100,7 +112,7 @@ std::cout << "-|-|-" << std::endl;
 std::cout << k4 << "|" << k5 << "|" << k6 << std::endl;
 std::cout << "-|-|-" << std::endl;
 std::cout << k7 << "|" << k8 << "|" << k9 << std::endl;
-goto start;
+}
 
 
     return 0;
