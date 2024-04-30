@@ -1,27 +1,39 @@
 #include <iostream>
 #include <vector>
 
+class Tahta{
+
+public:
+enum taslar : char{
+    k1,k2,k3,k4,k5,k6,k7,k8,k9
+};
+char bourd[9] = 
+   {' ',' ',' ',' ',' ',' ',' ',' ',' '};
+
+void tahta() const{
+std::cout << taslar[k1] << "|" << taslar[k2] << "|" << taslar[k3] << std::endl;
+std::cout << "-|-|-" << std::endl;
+std::cout << taslar[k4] << "|" << taslar[k5] << "|" << taslar[k6] << std::endl;
+std::cout << "-|-|-" << std::endl;
+std::cout << taslar[k7] << "|" << taslar[k8] << "|" << taslar[k9] << std::endl;
+}
+int secim(){
+   
+}
+}
 int main(){
-   char k1;
-   char k2;
-   char k3;
-   char k4;
-   char k5;
-   char k6;
-   char k7;
-   char k8;
-   char k9;
+   Tahta oyun;
    char oyuncubir{};
    char oyuncuiki{};
    char array[9];
-   char ex = 'X';
-   char oo = 'O';
+   auto x = 'X';
+   auto o = 'O';
    bool kosul1 = true;
    bool kosul2 = false;
    int tas1;
    char tas;
    
-   // sec tamam 
+   // tas sec tamam 
    while(kosul1){
    std::cout << "birinci oyunucu lutfen tas sec" << std::endl;
    std::cin >> tas;
@@ -33,42 +45,37 @@ int main(){
    kosul1 = false;
    }
 
- while(kosul2){
-std::cout << "birinci oyuncu:" << oyuncubir << std::endl;
-std::cout << "ikinci oyuncu:" << oyuncuiki << std::endl;
-
-
    switch (tas){  
 case 'O' & 'o':
 std::cin>> tas1;
 switch (tas1)
 {
 case 1:
-   k1 = oo;
+     k1 = o;
    break;
-   case 2:
-   k2 = oo;
+case 2:
+     k2 = o;
    break;
-   case 3:
-   k3 = oo;
+case 3:
+     k3 = o;
    break;
-   case 4:
-   k4 = oo;
+case 4:
+     k4 = o;
    break;
-   case 5:
-   k5 = oo;
+case 5:
+     k5 = o;
    break;
-   case 6:
-   k6 = oo;
+case 6:
+     k6 = o;
    break;
-   case 7:
-   k7 = oo;
+case 7:
+     k7 = o;
    break;
-   case 8:
-   k8 = oo;
+case 8:
+     k8 = o;
    break;
-   case 9:
-   k9 = oo;
+case 9:
+     k9 = o;
    break;
 }
 break;
@@ -77,135 +84,36 @@ std::cin>> tas1;
 switch (tas1)
 {
 case 1:
-   k1 = ex;
+     k1 = x;
    break;
-   case 2:
-   k2 = ex;
+case 2:
+     k2 = x;
    break;
-   case 3:
-   k3 = ex;
+case 3:
+     k3 = x;
    break;
-   case 4:
-   k4 = ex;
+case 4:
+     k4 = x;
    break;
-   case 5:
-   k5 = ex;
+case 5:
+     k5 = x;
    break;
-   case 6:
-   k6 = ex;
+case 6:
+     k6 = x;
    break;
-   case 7:
-   k7 = ex;
+case 7:
+     k7 = x;
    break;
-   case 8:
-   k8 = ex;
+case 8:
+     k8 = x;
    break;
-   case 9:
-   k9 = ex;
+case 9:
+     k9 = x;
    break;
 }
 }
 
-//bourd
-std::cout << k1 << "|" << k2 << "|" << k3 << std::endl;
-std::cout << "-|-|-" << std::endl;
-std::cout << k4 << "|" << k5 << "|" << k6 << std::endl;
-std::cout << "-|-|-" << std::endl;
-std::cout << k7 << "|" << k8 << "|" << k9 << std::endl;
-}
 
 
     return 0;
 }
-
-// #include <iostream>
-// #include <string>
-// #include <random>
-
-// class game{
-// private:
-//   char array[9];
-//     char ex = 'X';
-//     char oo = 'O';
-//     bool kosul = true;
-//     char k1;
-//     char k2;
-//     char k3;
-//     char k4;
-//     char k5;
-//     char k6;
-//     char k7;
-//     char k8;
-//     char k9;
-//     std::string oyuncubir;
-//     std::string oyuncuiki;
-// public:
-//     game() {
-//     for (int i = 0; i < 9; i++) {
-//         array[i] = ' ';
-//     }
-// }
-
-// void tablo(char k1,char k2,char k3,char k4,char k5,char k6,char k7,char k8,char k9){
-
-// std::cout << k1 << "|" << k2 << "|" << k3 << std::endl;
-// std::cout << "-|-|-" << std::endl;
-// std::cout << k4 << "|" << k5 << "|" << k6 << std::endl;
-// std::cout << "-|-|-" << std::endl;
-// std::cout << k7 << "|" << k8 << "|" << k9 << std::endl;
-// }
-
-// void kontrol() {
-//     if ((k1 == k2 && k2 == k3 && k3 == ex) ||
-//         (k1 == k5 && k5 == k9 && k9 == ex) ||
-//         (k1 == k4 && k4 == k7 && k7 == ex) ||
-//         (k2 == k5 && k5 == k8 && k8 == ex) ||
-//         (k3 == k6 && k6 == k9 && k9 == ex) ||
-//         (k4 == k5 && k5 == k6 && k6 == ex) ||
-//         (k7 == k8 && k8 == k9 && k9 == ex))
-//     {
-//         std::cout << "X kazandi" << std::endl;
-//         kosul = false;
-//     }
-//     else if ((k1 == k2 && k2 == k3 && k3 == oo) ||
-//              (k1 == k5 && k5 == k9 && k9 == oo) ||
-//              (k1 == k4 && k4 == k7 && k7 == oo) ||
-//              (k2 == k5 && k5 == k8 && k8 == oo) ||
-//              (k3 == k6 && k6 == k9 && k9 == oo) ||
-//              (k4 == k5 && k5 == k6 && k6 == oo) ||
-//              (k7 == k8 && k8 == k9 && k9 == oo))
-//     {
-//         std::cout << "O kazandi" << std::endl;
-//         kosul = false;
-//     }
-//     else {
-//         std::cout << "kazanan yok" << std::endl;
-//     }
-// }
-// game() {
-//     for (int i = 0; i < 9; i++) {
-//         array[i] = ' ';
-//     }
-// }
-
-// int giris(std::string oyuncubir, std::string oyuncuiki){
-
-//     std::cout << "birinci oyuncu hangisini oynamak istersin X or O" << std::endl;
-//     std::cin >>  oyuncubir;
-//     if(oyuncubir == ex){
-//         oyuncuiki = oo;
-//     }else{
-//         oyuncuiki = ex;
-//     }
-//     return 1;
-// }}
-
-
-
-// int main() {
-
-// game gamer1;
-// gamer1.giris();
-// return 0;
-// }
-
