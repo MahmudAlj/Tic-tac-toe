@@ -1,119 +1,77 @@
 #include <iostream>
 #include <vector>
 
-class Tahta{
+class Tahta {
+private:
+    char x = 'X';
+    char o = 'O';
+    char oyuncubir = 'X';  // Başlangıçta X oyuncusu olarak kabul edelim.
+    char oyuncuiki = 'O';  // Başlangıçta O oyuncusu olarak kabul edelim.
+    std::vector<char> taslar = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    bool oyunbitti = false;  // Oyunun bitip bitmediğini kontrol etmek için bir bayrak.
 
 public:
-enum taslar : char{
-    k1,k2,k3,k4,k5,k6,k7,k8,k9
+    void bourd() {
+        std::cout << "-------------" << std::endl;
+        std::cout << "| " << taslar[0] << " | " << taslar[1] << " | " << taslar[2] << " |" << std::endl;
+        std::cout << "-------------" << std::endl;
+        std::cout << "| " << taslar[3] << " | " << taslar[4] << " | " << taslar[5] << " |" << std::endl;
+        std::cout << "-------------" << std::endl;
+        std::cout << "| " << taslar[6] << " | " << taslar[7] << " | " << taslar[8] << " |" << std::endl;
+        std::cout << "-------------" << std::endl;
+    }
+
+    bool kontrol(char tas) {
+        if ((taslar[0] == tas && taslar[1] == tas && taslar[2] == tas) ||  // Yatay kontrol
+            (taslar[3] == tas && taslar[4] == tas && taslar[5] == tas) ||
+            (taslar[6] == tas && taslar[7] == tas && taslar[8] == tas) ||
+            (taslar[0] == tas && taslar[3] == tas && taslar[6] == tas) ||  // Dikey kontrol
+            (taslar[1] == tas && taslar[4] == tas && taslar[7] == tas) ||
+            (taslar[2] == tas && taslar[5] == tas && taslar[8] == tas) ||
+            (taslar[0] == tas && taslar[4] == tas && taslar[8] == tas) ||  // Çapraz kontrol
+            (taslar[2] == tas && taslar[4] == tas && taslar[6] == tas)) {
+            return true;  // Eğer kazanan varsa true döner.
+        }
+        return false;
+    }
+
+    void oyun() {
+        int secim;
+        while (!oyunbitti) {
+            bourd();
+            if (oyuncubir == 'X') {
+                std::cout << "Oyuncu 1 (X) icin secim yap: ";
+            } else {
+                std::cout << "Oyuncu 2 (O) icin secim yap: ";
+            }
+            std::cin >> secim;
+
+            if (secim < 1 || secim > 9 || taslar[secim - 1] == 'X' || taslar[secim - 1] == 'O') {
+                std::cout << "Gecersiz secim, tekrar deneyin." << std::endl;
+                continue;
+            }
+
+            taslar[secim - 1] = oyuncubir;
+
+            if (kontrol(oyuncubir)) {
+                bourd();
+                std::cout << "Oyuncu " << oyuncubir << " kazandi!" << std::endl;
+                oyunbitti = true;
+            } else if (taslar[0] != '1' && taslar[1] != '2' && taslar[2] != '3' &&
+                       taslar[3] != '4' && taslar[4] != '5' && taslar[5] != '6' &&
+                       taslar[6] != '7' && taslar[7] != '8' && taslar[8] != '9') {
+                bourd();
+                std::cout << "Berabere!" << std::endl;
+                oyunbitti = true;
+            }
+
+            oyuncubir = (oyuncubir == 'X') ? 'O' : 'X';  // Sırayı diğer oyuncuya geçir.
+        }
+    }
 };
-char bourd[9] = 
-   {' ',' ',' ',' ',' ',' ',' ',' ',' '};
 
-void tahta() const{
-std::cout << taslar[k1] << "|" << taslar[k2] << "|" << taslar[k3] << std::endl;
-std::cout << "-|-|-" << std::endl;
-std::cout << taslar[k4] << "|" << taslar[k5] << "|" << taslar[k6] << std::endl;
-std::cout << "-|-|-" << std::endl;
-std::cout << taslar[k7] << "|" << taslar[k8] << "|" << taslar[k9] << std::endl;
-}
-int secim(){
-   
-}
-}
-int main(){
-   Tahta oyun;
-   char oyuncubir{};
-   char oyuncuiki{};
-   char array[9];
-   auto x = 'X';
-   auto o = 'O';
-   bool kosul1 = true;
-   bool kosul2 = false;
-   int tas1;
-   char tas;
-   
-   // tas sec tamam 
-   while(kosul1){
-   std::cout << "birinci oyunucu lutfen tas sec" << std::endl;
-   std::cin >> tas;
-   oyuncubir = tas;
-   tas = 0;
-   std::cout << "ikinci oyuncu lutfen tas sec" << std::endl;
-   std::cin >> tas;
-   oyuncuiki = tas;
-   kosul1 = false;
-   }
-
-   switch (tas){  
-case 'O' & 'o':
-std::cin>> tas1;
-switch (tas1)
-{
-case 1:
-     k1 = o;
-   break;
-case 2:
-     k2 = o;
-   break;
-case 3:
-     k3 = o;
-   break;
-case 4:
-     k4 = o;
-   break;
-case 5:
-     k5 = o;
-   break;
-case 6:
-     k6 = o;
-   break;
-case 7:
-     k7 = o;
-   break;
-case 8:
-     k8 = o;
-   break;
-case 9:
-     k9 = o;
-   break;
-}
-break;
-case 'X' & 'x':
-std::cin>> tas1;
-switch (tas1)
-{
-case 1:
-     k1 = x;
-   break;
-case 2:
-     k2 = x;
-   break;
-case 3:
-     k3 = x;
-   break;
-case 4:
-     k4 = x;
-   break;
-case 5:
-     k5 = x;
-   break;
-case 6:
-     k6 = x;
-   break;
-case 7:
-     k7 = x;
-   break;
-case 8:
-     k8 = x;
-   break;
-case 9:
-     k9 = x;
-   break;
-}
-}
-
-
-
+int main() {
+    Tahta oyun;
+    oyun.oyun();
     return 0;
 }
