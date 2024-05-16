@@ -5,10 +5,10 @@ class Tahta {
 private:
     char x = 'X';
     char o = 'O';
-    char oyuncubir = 'X';  // Başlangıçta X oyuncusu olarak kabul edelim.
-    char oyuncuiki = 'O';  // Başlangıçta O oyuncusu olarak kabul edelim.
+    char oyuncubir = 'X'; 
+    char oyuncuiki = 'O';  
     std::vector<char> taslar = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    bool oyunbitti = false;  // Oyunun bitip bitmediğini kontrol etmek için bir bayrak.
+    bool oyunbitti = false; 
 
 public:
     void bourd() {
@@ -22,15 +22,15 @@ public:
     }
 
     bool kontrol(char tas) {
-        if ((taslar[0] == tas && taslar[1] == tas && taslar[2] == tas) ||  // Yatay kontrol
+        if ((taslar[0] == tas && taslar[1] == tas && taslar[2] == tas) ||  
             (taslar[3] == tas && taslar[4] == tas && taslar[5] == tas) ||
             (taslar[6] == tas && taslar[7] == tas && taslar[8] == tas) ||
-            (taslar[0] == tas && taslar[3] == tas && taslar[6] == tas) ||  // Dikey kontrol
+            (taslar[0] == tas && taslar[3] == tas && taslar[6] == tas) ||  
             (taslar[1] == tas && taslar[4] == tas && taslar[7] == tas) ||
             (taslar[2] == tas && taslar[5] == tas && taslar[8] == tas) ||
-            (taslar[0] == tas && taslar[4] == tas && taslar[8] == tas) ||  // Çapraz kontrol
+            (taslar[0] == tas && taslar[4] == tas && taslar[8] == tas) ||  
             (taslar[2] == tas && taslar[4] == tas && taslar[6] == tas)) {
-            return true;  // Eğer kazanan varsa true döner.
+            return true; 
         }
         return false;
     }
@@ -65,7 +65,7 @@ public:
                 oyunbitti = true;
             }
 
-            oyuncubir = (oyuncubir == 'X') ? 'O' : 'X';  // Sırayı diğer oyuncuya geçir.
+            oyuncubir = (oyuncubir == 'X') ? 'O' : 'X';  
         }
     }
 };
